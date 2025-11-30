@@ -1,0 +1,552 @@
+/* --- Global Styles --- */
+html {
+    /* 1. CRITICAL FIX: This makes the page glide, allowing animations to trigger */
+    scroll-behavior: smooth;
+}
+
+:root {
+    --bg-color: #050510; 
+    --text-color: #e0e0e0;
+    --accent-blue: #3b82f6; 
+    --nav-bg: rgba(20, 20, 30, 0.7);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* 2. CRITICAL FIX: Prevents the Navbar from covering the section title */
+section {
+    scroll-margin-top: 100px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Navigation --- */
+.navbar {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 90%;
+    max-width: 600px;
+    padding: 15px 30px;
+    background: var(--nav-bg);
+    border-radius: 50px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 2rem;
+    font-weight: 400;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent-blue);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 80px; 
+    background: radial-gradient(circle at 70% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 40%);
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.hero-text {
+    flex: 1;
+    max-width: 550px;
+}
+
+.small-tag {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    font-weight: 500;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0;
+}
+
+.name-title {
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #5CA0F2 0%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #b0b0b0;
+}
+
+.hero-image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.hero-img {
+    max-width: 450px;
+    filter: grayscale(100%);
+    border-radius: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+/* --- Projects Section --- */
+.projects-section {
+    padding: 100px 0;
+    background: var(--bg-color);
+}
+
+.section-heading {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--accent-blue);
+    margin-bottom: 80px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.project-card {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    margin-bottom: 100px;
+}
+
+.project-card:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.project-image {
+    flex: 1;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.project-image img {
+    max-width: 100%; 
+    max-height: 450px; 
+    width: auto;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.project-image img:hover {
+    transform: scale(1.02);
+}
+
+.project-content {
+    flex: 1;
+}
+
+.project-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.project-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #b0b0b0;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 900px) {
+    .name-title { font-size: 3.5rem; }
+    
+    .hero-container {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .hero-img { max-width: 250px; }
+
+    .project-card, .project-card:nth-child(even) {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .navbar {
+        width: 95%;
+        justify-content: center;
+    }
+    
+    .nav-links a { margin: 0 10px; }
+}
+
+/* --- ANIMATIONS --- */
+
+/* 1. Hero Animations */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+    0% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+    50% { opacity: 0.8; transform: translateX(-50%) scale(1.1); }
+    100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+}
+
+.hero-text {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+.hero-image-wrapper {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+.glow-effect {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 40px;
+    background: var(--accent-blue);
+    filter: blur(50px);
+    z-index: 1;
+    opacity: 0.6;
+    animation: pulseGlow 4s infinite ease-in-out;
+}
+
+/* 2. Scroll Animations */
+.hidden-on-scroll {
+    opacity: 0;
+    transform: translateY(100px); /* Starts lower down */
+    filter: blur(5px);
+    transition: all 1.2s ease-out; /* Smooth transition duration */
+}
+
+.show-on-scroll {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+    padding-bottom: 15px;
+}
+
+
+/* --- CURSOR ANIMATION --- */
+
+.cursor-trailer {
+    width: 20px; 
+    height: 20px;
+    background-color: rgba(59, 130, 246, 0.5); /* Your blue color */
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none; /* Allows clicks to pass through */
+    z-index: 9999;
+    
+    /* Center the circle exactly on the mouse tip */
+    transform: translate(-50%, -50%);
+    
+    /* The Glow Effect */
+    box-shadow: 0 0 15px var(--accent-blue),
+                0 0 30px var(--accent-blue);
+
+    /* ANIMATION FIX: smoothly transition the left and top positions */
+    transition: left 0.15s ease-out, top 0.15s ease-out;
+
+    /* Start hidden */
+    opacity: 0;
+}
+
+.cursor-trailer.active {
+    opacity: 1;
+}
+
+
+
+
+
+
+/* --- SKILLS SECTION --- */
+.skills-section {
+    padding: 100px 0;
+    position: relative;
+}
+
+.skills-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap; /* Wraps on mobile */
+}
+
+/* The Glass Boards */
+.skill-category {
+    flex: 1;
+    min-width: 300px; /* Prevents them from getting too squished */
+    background: rgba(20, 20, 30, 0.5); /* Semi-transparent dark */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 40px;
+    padding-top: 20px;
+    
+    /* Glass Effect */
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    
+    /* Hover on the whole card gives it a subtle blue border */
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.skill-category:hover {
+    border-color: rgba(59, 130, 246, 0.3);
+    transform: translateY(-5px);
+}
+
+.category-title {
+    font-size: 1.5rem;
+    color: #e0e0e0;
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+    padding-bottom: 10px;
+    display: inline-block;
+    width: 100%;
+}
+
+/* The Grid of Icons */
+.icon-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 icons per row */
+    gap: 30px;
+    justify-items: center;
+}
+
+/* Individual Icon Item */
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.skill-item img {
+    width: 60px; /* Adjust based on your icon size */
+    height: 60px;
+    object-fit: contain;
+    /* Initial soft glow */
+    filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.3));
+    transition: filter 0.3s ease;
+}
+
+.skill-item span {
+    font-size: 0.85rem;
+    color: #b0b0b0;
+    opacity: 0; /* Text hidden by default */
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+/* --- HOVER EFFECTS --- */
+.skill-item:hover {
+    transform: translateY(-10px); /* Floats up */
+}
+
+.skill-item:hover img {
+    /* Intense Neon Glow on hover */
+    filter: drop-shadow(0 0 15px #3b82f6) drop-shadow(0 0 30px #3b82f6);
+}
+
+.skill-item:hover span {
+    opacity: 1; /* Show text */
+    transform: translateY(0);
+    color: #fff;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .skills-container {
+        flex-direction: column;
+    }
+    
+    .icon-grid {
+        grid-template-columns: repeat(3, 1fr); /* Keep 3 columns on mobile */
+        gap: 20px;
+    }
+    
+    .skill-item img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    /* On mobile, show text always because there is no hover */
+    .skill-item span {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* --- MOBILE FIX FOR SKILLS --- */
+@media (max-width: 768px) {
+    .skills-container {
+        flex-direction: column; /* Stack cards vertically */
+        align-items: center;
+        gap: 40px; /* Space between the cards */
+    }
+
+    .skill-category {
+        width: 100%; /* Take full width of phone screen */
+        max-width: 350px; /* But don't get too huge */
+        height: auto; /* Allow height to grow with content */
+        min-height: 300px; /* Ensure enough space for icons */
+        padding: 30px 20px; /* Adjust padding for mobile */
+    }
+
+    .icon-grid {
+        /* Ensure grid fits on phone: 3 icons per row */
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 20px;
+    }
+    
+    .category-title {
+        font-size: 1.2rem;
+        margin-bottom: 25px;
+    }
+}
+
+
+/* --- CONTACT SECTION --- */
+.contact-section {
+    padding-top: 100px;
+    padding-bottom: 50px;
+    text-align: center;
+    background: linear-gradient(to top, #020205, transparent); /* Fades into black at bottom */
+}
+
+.contact-text {
+    max-width: 600px;
+    margin: 0 auto 50px;
+    color: #b0b0b0;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* Container for the buttons */
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 100px;
+}
+
+/* NEON BUTTON STYLES */
+.contact-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 35px;
+    background: rgba(59, 130, 246, 0.1); /* Very faint blue bg */
+    border: 1px solid #3b82f6;
+    border-radius: 50px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    
+    /* Subtle glow initially */
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+}
+
+.contact-btn:hover {
+    background: #3b82f6; /* Solid blue on hover */
+    color: #fff;
+    transform: translateY(-5px);
+    /* Intense glow on hover */
+    box-shadow: 0 0 20px #3b82f6, 0 0 40px rgba(59, 130, 246, 0.6);
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+}
+
+/* --- FOOTER --- */
+.footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 30px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.highlight {
+    color: #3b82f6;
+    font-weight: 600;
+}
+
+.copyright {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* Mobile Adjustment for Buttons */
+@media (max-width: 600px) {
+    .contact-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .contact-btn {
+        width: 80%; /* Buttons stretch on mobile */
+        justify-content: center;
+    }
+}
